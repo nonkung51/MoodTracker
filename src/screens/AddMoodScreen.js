@@ -1,19 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import {View, TextInput, Text, Button} from 'react-native';
 import Slider from '@react-native-community/slider';
+import { useNavigation } from '@react-navigation/native';
 
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 import { moodAdd, moodDelete } from '../actions/moodActions';
 
 export default () => {
-  const mood = useSelector((state) => state.mood);
-
-  useEffect(() => {
-    console.log(mood);
-	}, [mood]);
-	
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   const [reason, setReason] = useState('Useless Placeholder');
 	const [happiness, setHappiness] = useState(0.5);
@@ -48,6 +44,12 @@ export default () => {
           dispatch(moodDelete(reason));
         }}
         title="Delete"
+      />
+      <Button
+        onPress={() => {
+          navigation.navigate('List');
+        }}
+        title="List"
       />
     </View>
   );
