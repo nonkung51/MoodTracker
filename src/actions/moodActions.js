@@ -7,10 +7,10 @@ export const moodAdd = (value) => {
   };
 };
 
-export const moodDelete = (value) => {
+export const moodDelete = (id) => {
   return {
     type: MOOD_DELETE,
-    payload: value,
+    payload: id,
   };
 };
 

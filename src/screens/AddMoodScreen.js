@@ -4,7 +4,7 @@ import Slider from '@react-native-community/slider';
 
 import {useSelector, useDispatch} from 'react-redux';
 
-import { moodAdd } from '../actions/moodActions';
+import { moodAdd, moodDelete } from '../actions/moodActions';
 
 export default () => {
   const mood = useSelector((state) => state.mood);
@@ -42,6 +42,12 @@ export default () => {
       <Button
         onPress={buttonHandler}
         title="OK"
+      />
+      <Button
+        onPress={() => {
+          dispatch(moodDelete(reason));
+        }}
+        title="Delete"
       />
     </View>
   );
